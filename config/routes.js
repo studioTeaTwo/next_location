@@ -33,6 +33,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   'get /': 'HomeController.index',
+  'post /locations': 'LocationController.create',
+  'get /admin/locations/create': 'AdminController.createRoom',
+  'get /admin/locations/:location_id': 'AdminController.locationDetail',
 
   /***************************************************************************
   *                                                                          *

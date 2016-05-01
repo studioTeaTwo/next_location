@@ -4,8 +4,8 @@
  * @description :: Server-side logic for managing Homes
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
 const co = require('co');
+const Promise = require('bluebird');
 
 module.exports = {
   index: (req, res) => {
