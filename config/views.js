@@ -11,6 +11,8 @@
  * http://sailsjs.org/#!/documentation/concepts/Views
  */
 
+const swig = require('swig');
+
 module.exports.views = {
 
   /****************************************************************************
@@ -25,18 +27,25 @@ module.exports.views = {
   * dust atpl, eco, ect, jazz, jqtpl, JUST, liquor, QEJS, swig, templayed,    *
   * toffee, walrus, & whiskers                                                *
   *                                                                           *
-  * For more options, check out the docs:                                     *
-  * https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md#engine *
-  *                                                                           *
-  ****************************************************************************/
+   * For more options, check out the docs:                                     *
+   * https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md#engine *
+   *                                                                           *
+   ****************************************************************************/
 
-  engine: 'ejs',
+  engine: {
+    ext: 'swig',
+    fn:  (pathName, locals, cb) => {
+      swig.setDefaults({tagControls: ['{%', '%}']});
+      return swig.renderFile(pathName, locals, cb);
+    }
+  },
+
 
 
   /****************************************************************************
-  *                                                                           *
-  * Layouts are simply top-level HTML templates you can use as wrappers for   *
-  * your server-side views. If you're using ejs or jade, you can take         *
+   *                                                                           *
+   * Layouts are simply top-level HTML templates you can use as wrappers for   *
+   * your server-side views. If you're using ejs or jade, you can take         *
   * advantage of Sails' built-in `layout` support.                            *
   *                                                                           *
   * When using a layout, when one of your views is served, it is injected     *
@@ -56,26 +65,6 @@ module.exports.views = {
   * omitted)                                                                  *
   *                                                                           *
   ****************************************************************************/
-
-  /****************************************************************************
-  *                                                                           *
-  * Using Multiple Layouts                                                    *
-  *                                                                           *
-  * If you're using the default `ejs` or `handlebars` Sails supports the use  *
-  * of multiple `layout` files. To take advantage of this, before rendering a *
-  * view, override the `layout` local in your controller by setting           *
-  * `res.locals.layout`. (this is handy if you parts of your app's UI look    *
-  * completely different from each other)                                     *
-  *                                                                           *
-  * e.g. your default might be                                                *
-  * layout: 'layouts/public'                                                  *
-  *                                                                           *
-  * But you might override that in some of your controllers with:             *
-  * layout: 'layouts/internal'                                                *
-  *                                                                           *
-  ****************************************************************************/
-
-  layout: 'layout',
 
   /****************************************************************************
   *                                                                           *

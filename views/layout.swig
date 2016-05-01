@@ -29,11 +29,16 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
+    {% block css %}
+    {% endblock css %}
+
   </head>
 
   <body>
-    <%- body %>
+    {% block body %}
+    {% endblock body %}
 
 
 
@@ -59,6 +64,7 @@
     -->
 
     <!--TEMPLATES-->
+
     <!--TEMPLATES END-->
 
 
@@ -86,6 +92,9 @@
     -->
 
     <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    {% block scripts %}
+    {% endblock scripts %}
     <!--SCRIPTS END-->
   </body>
 </html>

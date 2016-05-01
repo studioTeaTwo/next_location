@@ -1,3 +1,6 @@
+{% extends 'layout.swig' %}
+
+{% block body %}
 <!-- Default home page -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600' rel='stylesheet' type='text/css'>
 <style>
@@ -12,8 +15,7 @@ setTimeout(function sunrise () {
 
 <div class="default-page">
   <div class="header">
-    <h1 id="main-title" class="container"><%= __('A brand new app.') %></h1>
-    <h3 class="container">You're looking at: <code><%= view.pathFromApp + '.' +view.ext %></code></h3>
+    <h1 id="main-title" class="container">A brand new app.</h1>
   </div>
   <div class="main container clearfix">
     <!-- <h1>Getting started</h1>
@@ -72,3 +74,4 @@ setTimeout(function sunrise () {
     </div>
   </div>
 </div>
+{% endblock %}
