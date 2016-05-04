@@ -7,6 +7,8 @@
 "use strict";
 
 const co = require('co');
+const map = require('googlemaps');
+var config = require('../../config/googlemap');
 
 module.exports = {
   index: (req, res) => {
@@ -23,8 +25,31 @@ module.exports = {
       return yield Locations.findOne({where: {locationId:locationId}});
     }).then((location) => {
       sails.log(location);
-      if(location)
-        res.view('pages/admin/detail.swig', {location: location});
+      if(location){
+    	  var locationpoint = [ location.latitude,location.longitude ].toString();
+    	  var gmAPI = new map(config);
+    	  var params = {
+    	    center: locationpoint,
+    	    zoom: 15,
+    	    size: '500x400',
+    	    maptype: 'roadmap',
+    	    style: [
+    	      {
+    	        feature: 'road',
+    	        element: 'all',
+    	        rules: {
+    	          hue: '0x00ff00'
+    	        }
+    	      }
+    	    ]
+    	  };
+    	  var imageurl = gmAPI.staticMap(params); // return static map URL
+    	  /*gmAPI.staticMap(params, function(err, binaryImage) {
+    	    // fetch asynchronously the binary image
+    	  });*/
+    	  sails.log(imageurl);
+    	  res.view('pages/admin/detail.swig', {location: location,imageurl: imageurl});
+      }
       else
         res.notFound();
 

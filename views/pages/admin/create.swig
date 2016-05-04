@@ -2,9 +2,8 @@
 
 {% block body %}
   <form method="post" action="/locations">
-    <label>井戸</label><input type="string" name="longitude" />
-
-    <label>軽度</label><input type="string"  name="latitude" />
+    <label>井戸</label><input type="string" name="latitude" />
+    <label>軽度</label><input type="string"  name="longitude" />
     <label>name</label><input type="string" name="name" />
     <label>owner</label><input type="string" name="owner" />
     <input type="submit">

@@ -10,7 +10,9 @@
   <h1>経度</h1>
   <h1>{{ location.longitude }}</h1>
 
-  // このへんにgoogleMapおく
+  <h1>マップ</h1>
+  <image src={{ imageurl }}>
+  
 {% endblock %}
 
 {% block scripts %}
