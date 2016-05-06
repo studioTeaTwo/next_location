@@ -33,8 +33,8 @@ module.exports = {
       sails.log(location);
       return res.redirect('/admin/locations/' + location.locationId);
     }).catch((err) => {
-      sails.log.serverError("＼(^o^)／");
-      sails.log.serverError(err);
+      sails.log.error("＼(^o^)／");
+      sails.log.error(err);
       return res.badRequest();
     });
   }
