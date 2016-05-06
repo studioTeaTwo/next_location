@@ -20,27 +20,23 @@ module.exports = {
     });
   },
   locationDetail: (req, res) => {
-    co(function *(){
-      let locationId = req.params.location_id;
-      return yield Locations.findOne({where: {locationId:locationId}});
-    }).then((location) => {
-      sails.log(location);
-      if(location){
-    	  var locationpoint = [ location.latitude,location.longitude ].toString();
-    	  map.getImage(locationpoint, option).then(function(value){
-    		  res.view('pages/admin/detail.swig', {
-    			  location: location, 
-    			  imageurl: value
-    		  });
-    	  }).catch(function(error){
-    		  sails.log.error(error);
-    	  });
-      }
-      else{
-        res.notFound();
-      }
-    }).catch((err) => {
-      return res.serverError(err);
-    });
+	  co(function *(){
+		  //地理情報取得
+		  let locationId = req.params.location_id;
+		  let location = yield Locations.findOne({where: {locationId:locationId}});
+		  //画像取得
+		  let locationpoint = [ location.latitude,location.longitude ].toString();
+		  let imageurl = yield map.getImage(locationpoint, option);
+
+		  return {location: location, imageurl: imageurl};
+	  }).then((result) => {
+		  sails.log(result);
+		  res.view('pages/admin/detail.swig', {
+			  location: result.location, 
+			  imageurl: result.imageurl
+		  });
+	  }).catch((err) => {
+		  return res.serverError(err);
+	  });
   }
 };
