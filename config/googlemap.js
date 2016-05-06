@@ -1,5 +1,5 @@
 module.exports = {
-  key: 'AIzaSyAG6bK7L_dI7tcbMeCrsgJEp6TmMz52PKY', // your google API key
+  key: 'XXXXXXXXX', // your google API key
   stagger_time:       1000, // for elevationPath
   encode_polylines:   false,
   secure:             true, // use https
