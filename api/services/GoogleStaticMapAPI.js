@@ -6,7 +6,7 @@ const config = require('../../config/googlemap');
 module.exports = {
 		getImage: (locationpoint, option) => {
 			return new Promise(function (resolve, reject) {
-				if(option != 'url' && option != 'binary'){
+				if(option !== 'url' && option !== 'binary'){
 					reject(new Error('StaticMapAPI param : ' + option));
 				}
 				else
@@ -30,7 +30,7 @@ module.exports = {
 
 					if(option == 'url'){
 						var imageurl = gmAPI.staticMap(params); // return static map URL
-						sails.log(imageurl);
+						sails.log('api:' + imageurl);
 						resolve(imageurl);
 					}else{
 						// fetch asynchronously the binary image

@@ -30,11 +30,9 @@ module.exports = {
 
 		  return {location: location, imageurl: imageurl};
 	  }).then((result) => {
+		  //View生成
 		  sails.log(result);
-		  res.view('pages/admin/detail.swig', {
-			  location: result.location, 
-			  imageurl: result.imageurl
-		  });
+		  res.view('pages/admin/detail.swig', result);
 	  }).catch((err) => {
 		  return res.serverError(err);
 	  });
