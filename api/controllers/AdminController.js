@@ -7,8 +7,8 @@
 "use strict";
 
 const co = require('co');
-const map = require('googlemaps');
-var config = require('../../config/googlemap');
+var map = require('../services/GoogleStaticMapAPI');
+const option = 'url';
 
 module.exports = {
   index: (req, res) => {
@@ -20,41 +20,21 @@ module.exports = {
     });
   },
   locationDetail: (req, res) => {
-    co(function *(){
-      let locationId = req.params.location_id;
-      return yield Locations.findOne({where: {locationId:locationId}});
-    }).then((location) => {
-      sails.log(location);
-      if(location){
-    	  var locationpoint = [ location.latitude,location.longitude ].toString();
-    	  var gmAPI = new map(config);
-    	  var params = {
-    	    center: locationpoint,
-    	    zoom: 15,
-    	    size: '500x400',
-    	    maptype: 'roadmap',
-    	    style: [
-    	      {
-    	        feature: 'road',
-    	        element: 'all',
-    	        rules: {
-    	          hue: '0x00ff00'
-    	        }
-    	      }
-    	    ]
-    	  };
-    	  var imageurl = gmAPI.staticMap(params); // return static map URL
-    	  /*gmAPI.staticMap(params, function(err, binaryImage) {
-    	    // fetch asynchronously the binary image
-    	  });*/
-    	  sails.log(imageurl);
-    	  res.view('pages/admin/detail.swig', {location: location,imageurl: imageurl});
-      }
-      else
-        res.notFound();
+	  co(function *(){
+		  //DB取得
+		  let locationId = req.params.location_id;
+		  let location = yield Locations.findOne({where: {locationId:locationId}});
+		  //画像取得
+		  let locationpoint = [ location.latitude,location.longitude ].toString();
+		  let imageurl = yield map.getImage(locationpoint, option);
 
-    }).catch((err) => {
-      return res.serverError(err);
-    });
+		  return {location: location, imageurl: imageurl};
+	  }).then((result) => {
+		  //View生成
+		  sails.log(result);
+		  res.view('pages/admin/detail.swig', result);
+	  }).catch((err) => {
+		  return res.serverError(err);
+	  });
   }
 };
