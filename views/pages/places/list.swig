@@ -13,5 +13,5 @@
   {% else %}
     <li>周辺に何も見つかりませんでした</li>  
   {% endif %}
-  <a href="../admin/locations/create">新しい場所を登録する</a>
+  <a href="/admin/locations/create">新しい場所を登録する</a>
 {% endblock %}
