@@ -8,7 +8,6 @@
 "use strict";
 
 const co = require('co');
-const map = require('../services/GooglePlacesAPI');
 
 module.exports = {
 		search: (req, res) => {
@@ -18,7 +17,7 @@ module.exports = {
 				let longitude = 140.111111;
 				//GoogleAPI取得
 				let locationpoint = [ latitude, longitude ].toString();
-				let places = yield map.searchPlaces(locationpoint);
+				let places = yield GooglePlacesAPI.searchPlaces(locationpoint);
 				return {list: places.results};
 			}).then((result) => {
 				//View生成

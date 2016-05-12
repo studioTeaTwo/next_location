@@ -7,7 +7,6 @@
 "use strict";
 
 const co = require('co');
-const map = require('../services/GoogleStaticMapAPI');
 const option = 'url';
 
 module.exports = {
@@ -26,7 +25,7 @@ module.exports = {
 		  let location = yield Locations.findOne({where: {locationId:locationId}});
 		  //画像取得
 		  let locationpoint = [ location.latitude,location.longitude ].toString();
-		  let imageurl = yield map.getImage(locationpoint, option);
+		  let imageurl = yield GoogleStaticMapAPI.getImage(locationpoint, option);
 		  
 		  return {location: location, imageurl: imageurl};
 	  }).then((result) => {
