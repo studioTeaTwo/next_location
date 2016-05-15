@@ -1,8 +1,8 @@
 /**
  * HomeController
- *
+ * 
  * @description :: Server-side logic for managing Homes
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * @help :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 "use strict";
 
@@ -19,21 +19,21 @@ module.exports = {
     });
   },
   locationDetail: (req, res) => {
-	  co(function *(){
-		  //レコード取得
-		  let locationId = req.params.location_id;
-		  let location = yield Locations.findOne({where: {locationId:locationId}});
-		  //画像取得
-		  let locationpoint = [ location.latitude,location.longitude ].toString();
-		  let imageurl = yield GoogleStaticMapAPI.getImage(locationpoint, option);
-		  
-		  return {location: location, imageurl: imageurl};
-	  }).then((result) => {
-		  //View生成
-		  sails.log(result);
-		  res.view('pages/admin/detail.swig', result);
-	  }).catch((err) => {
-		  return res.serverError(err);
-	  });
+    co(function *(){
+      // レコード取得
+      let locationId = req.params.location_id;
+      let location = yield Locations.findOne({where: {locationId:locationId}});
+      // 画像取得
+      let locationpoint = [ location.latitude,location.longitude ].toString();
+      let imageurl = yield GoogleStaticMapAPI.getImage(locationpoint, option);
+
+      return {location: location, imageurl: imageurl};
+    }).then((result) => {
+      // View生成
+      sails.log(result);
+      res.view('pages/admin/detail.swig', result);
+    }).catch((err) => {
+      return res.serverError(err);
+    });
   }
 };
