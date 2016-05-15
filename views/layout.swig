@@ -93,6 +93,8 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+
     {% block scripts %}
     {% endblock scripts %}
     <!--SCRIPTS END-->

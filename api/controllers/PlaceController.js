@@ -12,10 +12,14 @@ const dummyLatitude = 35.681368;
 const dummyLongitude = 139.766076;
 
 module.exports = {
+    searchForm(req, res){
+      res.view('pages/places/search_forms.swig');
+    },
 		search: (req, res) => {
 			co(function *(){
 				// ToDo: GPS取得
         // GPSからの取得はクライアントにやらせた方が疎結合かと思います.
+        // TODO Validate
 				let latitude = req.param('latitude', dummyLatitude);
 				let longitude = req.param('longitude', dummyLongitude);
 				//GoogleAPI取得
