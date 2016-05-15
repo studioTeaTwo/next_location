@@ -5,8 +5,8 @@
   <button onclick="getCurrencLocation()">位置情報から取得する</button>
 
   <form action="/map/search">
-    <input id="latitude_form" type="hidden" name="latitude" value="">
-    <input id="longitude_form" type="hidden" name="longitude" value="">
+    <input id="latitude_form" type="text" name="latitude" value="">
+    <input id="longitude_form" type="text" name="longitude" value="">
 
     <input type="submit"></form>
 
