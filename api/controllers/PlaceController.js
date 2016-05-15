@@ -8,16 +8,18 @@
 "use strict";
 
 const co = require('co');
+const dummyLatitude = 35.681368;
+const dummyLongitude = 139.766076;
 
 module.exports = {
 		search: (req, res) => {
 			co(function *(){
-				//ToDo: GPS取得
-				let latitude = 35.111111;
-				let longitude = 140.111111;
+				// ToDo: GPS取得
+        // GPSからの取得はクライアントにやらせた方が疎結合かと思います.
+				let latitude = req.param('latitude', dummyLatitude);
+				let longitude = req.param('longitude', dummyLongitude);
 				//GoogleAPI取得
-				let locationpoint = [ latitude, longitude ].toString();
-				let places = yield GooglePlacesAPI.searchPlaces(locationpoint);
+        let places = yield LocationService.search(latitude, longitude);
 				return {list: places.results};
 			}).then((result) => {
 				//View生成

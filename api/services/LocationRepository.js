@@ -9,7 +9,7 @@ module.exports = {
       owner: owner,
       name: name
     });
-    
+
     return Locations.create(params) ;
   }
 }
