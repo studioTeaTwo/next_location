@@ -4,10 +4,13 @@
   {% if list %}
     <table border="1">
       {% for place in list %}
-        <tr>
+        <tr><form action="/checkin/create">
+          <!-- TODO issue#12 の後にlocationIdに差し替え -->
+          <input type="hidden" name="locationId" value={{ place }}>
           <td><img src={{ place.icon }} /></td>
           <td bgcolor="#99CC00">{{ place.name }}</td>
-        </tr>
+          <td><input type="submit" value="checkin!"></td>
+        </form></tr>
       {% endfor %}
     </table>
   {% else %}

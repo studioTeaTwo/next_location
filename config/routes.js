@@ -34,6 +34,7 @@ module.exports.routes = {
 
   'get /': 'HomeController.index',
   'post /locations': 'LocationController.create',
+  'get /map': '',
   'get /map/search': 'PlaceController.search',
   'get /map/search/form': 'PlaceController.searchForm',
 

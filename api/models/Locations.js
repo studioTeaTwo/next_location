@@ -44,6 +44,11 @@ module.exports = {
       type: 'string',
       required: true,
       columnName: 'owner'
+    },
+    
+    // Attribute methods
+    getLocationId: function (){
+      return this.locationId;
     }
   }
 };

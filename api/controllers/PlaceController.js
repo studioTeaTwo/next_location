@@ -22,6 +22,7 @@ module.exports = {
       // TODO Validate
       let latitude = req.param('latitude', dummyLatitude);
       let longitude = req.param('longitude', dummyLongitude);
+      sails.log('緯度: %d 経度: %d' ,latitude ,longitude );
       // GoogleAPI取得
       let places = yield LocationService.search(latitude, longitude);
       return {list: places.results};
