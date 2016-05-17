@@ -1,7 +1,7 @@
 {% extends 'frame.swig' %}
 
 {% block body %}
-  {% if list %}
+  {% if list.length > 0 %}
     <table border="1">
       {% for place in list %}
         <tr><form action="/checkin/create">
