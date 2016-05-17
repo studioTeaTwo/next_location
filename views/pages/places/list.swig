@@ -6,7 +6,10 @@
       {% for place in list %}
         <tr><form action="/checkin/create">
           <!-- TODO issue#12 の後にlocationIdに差し替え -->
-          <input type="hidden" name="locationId" value={{ place }}>
+          <input type="hidden" name="locationId" value={{ place.place_id }}>
+          <input type="hidden" name="lat" value={{ place.geometry.location.lat }}>
+          <input type="hidden" name="lng" value={{ place.geometry.location.lng }}>
+          <input type="hidden" name="name" value="{{ place.name }}">
           <td><img src={{ place.icon }} /></td>
           <td bgcolor="#99CC00">{{ place.name }}</td>
           <td><input type="submit" value="checkin!"></td>

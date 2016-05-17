@@ -4,7 +4,6 @@
  * @description :: Server-side logic for managing Places
  * @help :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
 "use strict";
 
 const co = require('co');

@@ -4,7 +4,7 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
-// FIXME 場所とポータル分けたほうがよいかも
+// GooglePlacesAPIのミラー的な
 module.exports = {
   tableName: 'locations',
   autoCreatedAt: false,
@@ -37,13 +37,6 @@ module.exports = {
       type: 'string',
       required: true,
       columnName: 'name'
-    },
-
-    // 所有者。認証してユーザ入れたほうがよさげ
-    owner:{
-      type: 'string',
-      required: true,
-      columnName: 'owner'
     },
     
     // Attribute methods

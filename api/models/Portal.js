@@ -19,7 +19,7 @@ module.exports = {
     },
     
     locationId: {
-      type: 'integer',
+      type: 'string',
       required: true,
       columnName: 'location_id'
     },
@@ -32,12 +32,12 @@ module.exports = {
     
     nickname:{
       type: 'string',
-      columnName: 'hp'
+      columnName: 'nickname'
     },
     
-    owner:{
-      type: 'string',
-      columnName: 'owner'
+    ownerId:{
+      type: 'integer',
+      columnName: 'owner_id'
     }
   }
 };
