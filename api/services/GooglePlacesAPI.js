@@ -1,10 +1,9 @@
 "use strict";
 
-
 module.exports = {
 		searchPlaces:(locationpoint) => {
 			return new Promise(function (resolve, reject) {
-				var params = {
+				let params = {
 						location: locationpoint,
 						radius: 50,
 				};
