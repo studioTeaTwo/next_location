@@ -1,20 +1,10 @@
 {% extends 'frame.swig' %}
 
 {% block body %}
-
-  <button onclick="getCurrencLocation()">位置情報から取得する</button>
-
-  <form action="/place/search">
-    <input id="latitude_form" type="text" name="latitude" value="">
-    <input id="longitude_form" type="text" name="longitude" value="">
-
-    <input type="submit"></form>
-
+  
   <p id="out"></p>
 
   <script>
-
-
     function getCurrencLocation(){
 
         var output = document.getElementById("out");
@@ -32,10 +22,7 @@
 
           var img = new Image();
           img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-
-          $("#latitude_form").attr('value', latitude);
-          $("#longitude_form").attr('value', longitude);
-
+          
           output.appendChild(img);
         };
 
@@ -47,7 +34,8 @@
 
         navigator.geolocation.getCurrentPosition(success, error);
       }
-
+      
+      window.onload=getCurrencLocation;
   </script>
 
 {% endblock %}
