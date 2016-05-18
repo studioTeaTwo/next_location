@@ -7,8 +7,6 @@
 
 module.exports = {
   tableName: 'portals',
-  autoCreatedAt: true,
-  autoUpdatedAt: true,
     
   attributes: {
     portalId: {
@@ -38,6 +36,20 @@ module.exports = {
     ownerId:{
       type: 'integer',
       columnName: 'owner_id'
+    },
+    
+    createdAt: {
+      type: 'datetime',
+      required: true,
+      //defaultsTo: ,
+      columnName: 'created_at'
+    },
+    
+    updatedAt: {
+      type: 'datetime',
+      required: true,
+      //defaultsTo: ,
+      columnName: 'updated_at'
     }
   }
 };

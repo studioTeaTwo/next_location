@@ -8,8 +8,6 @@
 
 module.exports = {
   tableName: 'checkins',
-  autoCreatedAt: true,
-  autoUpdatedAt: true,
 
   attributes: {
     checkinId: {
@@ -18,7 +16,7 @@ module.exports = {
       autoIncrement: true,
       columnName: 'checkin_id'
     },
-
+    
     portalId: {
       type: 'integer',
       required: true,
@@ -27,8 +25,22 @@ module.exports = {
     
     userId: {
       type: 'integer',
-      //required: true,
+      required: true,
       columnName: 'user_id'
+    },
+    
+    createdAt: {
+      type: 'datetime',
+      required: true,
+      //defaultsTo: ,
+      columnName: 'created_at'
+    },
+    
+    updatedAt: {
+      type: 'datetime',
+      required: true,
+      //defaultsTo: ,
+      columnName: 'updated_at'
     }
   }
 };
