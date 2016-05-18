@@ -25,7 +25,7 @@ module.exports = {
     },
     
     hp:{
-      type: 'string',
+      type: 'integer',
       defaultsTo: 100,
       columnName: 'hp'
     },
