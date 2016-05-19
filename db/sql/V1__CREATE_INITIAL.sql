@@ -12,7 +12,7 @@ create table checkins(
     checkin_id bigint primary key AUTO_INCREMENT,
     user_id bigint not null,
     portal_id bigint not null,
-    created_at TIMESTAMP not null,
+    created_at TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
@@ -23,7 +23,6 @@ create table portals(
   hp integer default 100 not null,
   nickname VARCHAR(255),
   owner_id bigint,
-  created_at TIMESTAMP not null,
+  created_at TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
-

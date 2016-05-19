@@ -17,7 +17,6 @@ module.exports = {
       let name = req.param('name', undefined);
       // TODO ユーザー情報を作ったら追加する
       let userId = req.param('userId', 1000);
-      let createdDate = {createdAt: new Date(), updatedAt: new Date()};
       sails.log('allParams: %s',req.allParams());
       
       if (_.isUndefined(locationId)) {
@@ -34,10 +33,10 @@ module.exports = {
       // TODO transaction対応
       let location = yield Locations.findOrCreate({ name: name}, params );
       sails.log('location: %s',location);
-      let portal = yield Portal.findOrCreate({ locationId: locationId }, { locationId: locationId, createdDate });
+      let portal = yield Portal.findOrCreate({ locationId: locationId }, { locationId: locationId });
       sails.log('portal: %s',portal);
       
-      return yield Checkin.create({ userId: userId, portalId: portal.portalId , createdDate });
+      return yield Checkin.create({ userId: userId, portalId: portal.portalId });
     }).then((checkin) => {
       sails.log('checkin: %s',checkin);
       return res.redirect("/map");
