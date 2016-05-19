@@ -31,6 +31,7 @@ module.exports = {
           longitude: lng,
           name: name
       };
+      // TODO transaction対応
       let location = yield Locations.findOrCreate({ name: name}, params );
       sails.log('location: %s',location);
       let portal = yield Portal.findOrCreate({ locationId: locationId }, { locationId: locationId, createdDate });
