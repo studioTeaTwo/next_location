@@ -7,6 +7,7 @@
 "use strict";
 
 const co = require('co');
+const _ = require('lodash');
 
 module.exports = {
   create: (req, res) => {
@@ -19,7 +20,11 @@ module.exports = {
       let userId = req.param('userId', 1000);
       sails.log('allParams: %s',req.allParams());
       
-      if (_.isUndefined(locationId)) {
+      if (_.isUndefined(locationId) || 
+          _.isUndefined(lat) ||
+          _.isUndefined(lng) ||
+          _.isUndefined(name) ||
+          _.isUndefined(userId)) {
         return Promise.reject('パラメータがFXXK');
       };
       
