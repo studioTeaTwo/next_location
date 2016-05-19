@@ -39,5 +39,8 @@
     "url": "git://github.com/ozw_sei/location_app.git"
   },
   "author": "ozw_sei",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "eslint": "^2.10.2"
+  }
 }
