@@ -12,14 +12,12 @@ module.exports = {
 
   attributes: {
     locationId: {
-      type: 'integer',
+      type: 'string',
       primaryKey: true,
-      autoIncrement: true,
       columnName: 'location_id'
     },
     // TODO postgres の geometory 型使いたい(T_T)
     // TODO せめて複合Unique制約つけたい
-
     // 緯度
     latitude: {
       type: 'string',
