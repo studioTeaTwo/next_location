@@ -33,10 +33,12 @@ module.exports.routes = {
   ***************************************************************************/
 
   'get /': 'HomeController.index',
-  'post /locations': 'LocationController.create',
-  'get /map/search': 'PlaceController.search',
-  'get /map/search/form': 'PlaceController.searchForm',
+  'get /map': 'MapController.index',
 
+  //開発用
+  'post /locations': 'LocationController.create',
+  'get /place/search': 'PlaceController.search',
+  'get /place/search/form': 'PlaceController.searchForm',
   'get /admin/locations/create': 'AdminController.createRoom',
   'get /admin/locations/:location_id': 'AdminController.locationDetail',
 

@@ -4,7 +4,6 @@
  * @description :: Server-side logic for managing Places
  * @help :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
 "use strict";
 
 const co = require('co');
@@ -22,6 +21,7 @@ module.exports = {
       // TODO Validate
       let latitude = req.param('latitude', dummyLatitude);
       let longitude = req.param('longitude', dummyLongitude);
+      sails.log('緯度: %d 経度: %d' ,latitude ,longitude );
       // GoogleAPI取得
       let places = yield LocationService.search(latitude, longitude);
       return {list: places.results};
