@@ -16,8 +16,7 @@ module.exports = {
       let lat = req.param('lat', undefined);
       let lng = req.param('lng', undefined);
       let name = req.param('name', undefined);
-      // TODO ユーザー情報を作ったら追加する
-      let userId = req.param('userId', 1000);
+      let userId = req.param('userId', undefined);
       sails.log('allParams: %s',req.allParams());
       
       if (_.isUndefined(locationId) || 
@@ -30,13 +29,13 @@ module.exports = {
       
       // TODO issue#12 の後にlocationIdに差し替え
       let params = {
-          //locationId: locationId,
+          locationId: locationId,
           latitude: lat,
           longitude: lng,
           name: name
       };
       // TODO transaction対応
-      let location = yield Locations.findOrCreate({ name: name}, params );
+      let location = yield Locations.findOrCreate({ locationId: locationId }, params );
       sails.log('location: %s',location);
       let portal = yield Portal.findOrCreate({ locationId: locationId }, { locationId: locationId });
       sails.log('portal: %s',portal);

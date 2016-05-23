@@ -2,13 +2,17 @@
 
 {% block body %}
 
-  <button onclick="getCurrentLocation()">位置情報から取得する</button>
-  <button onclick="getDummyLocation()">テキストから取得する</button>
+    <button onclick="getCurrentLocation()">位置情報から取得する</button>
+    <button onclick="getDummyLocation()">テキストから取得する</button>
 
   <form action="/place/search">
+    <label for="namae" accesskey="n">ユーザーID：</label>
+    <input id="user_form" type="text" name="userId" value="1000">
+    <br/>
+    <label for="namae" accesskey="n">緯度経度：</label>
     <input id="latitude_form" type="text" name="latitude" value="">
     <input id="longitude_form" type="text" name="longitude" value="">
-
+    <br/>
     <input type="submit" value="checkin候補？">
   </form>
   

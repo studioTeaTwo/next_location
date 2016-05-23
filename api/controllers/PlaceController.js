@@ -7,6 +7,7 @@
 "use strict";
 
 const co = require('co');
+const dummyUser = 1000;
 const dummyLatitude = 35.681368;
 const dummyLongitude = 139.766076;
 
@@ -16,15 +17,14 @@ module.exports = {
   },
   search: (req, res) => {
     co(function *(){
-      // TODO GPS取得
-      // GPSからの取得はクライアントにやらせた方が疎結合かと思います.
       // TODO Validate
+      let user = req.param('userId', dummyUser);
       let latitude = req.param('latitude', dummyLatitude);
       let longitude = req.param('longitude', dummyLongitude);
       sails.log('緯度: %d 経度: %d' ,latitude ,longitude );
       // GoogleAPI取得
       let places = yield LocationService.search(latitude, longitude);
-      return {list: places.results};
+      return {list: places.results, user: user};
     }).then((result) => {
       // View生成
       sails.log(result);

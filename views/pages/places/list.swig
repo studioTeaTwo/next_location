@@ -5,7 +5,8 @@
     <table border="1">
       {% for place in list %}
         <tr><form action="/checkin/create">
-          <!-- TODO issue#12 の後にlocationIdに差し替え -->
+          <!-- TODO placeとportalの混合 -->
+          <input type="hidden" name="userId" value={{ user }}>
           <input type="hidden" name="locationId" value={{ place.place_id }}>
           <input type="hidden" name="lat" value={{ place.geometry.location.lat }}>
           <input type="hidden" name="lng" value={{ place.geometry.location.lng }}>
